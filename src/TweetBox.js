@@ -44,6 +44,7 @@ const TweetBox = () => {
           <input
             value={tweetMessage.message}
             type="text"
+            maxLength="140"
             placeholder="What's happening?"
             onChange={handleMessageInput}
           />
