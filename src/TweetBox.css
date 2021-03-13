@@ -26,6 +26,7 @@
 .tweetBox_imageInput {
   border: none;
   padding: 10px;
+  outline: none;
 }
 
 .tweetBox__tweetButton {
