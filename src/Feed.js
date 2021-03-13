@@ -7,7 +7,6 @@ import db from "./firebase";
 const Feed = () => {
   const [posts, setPosts] = useState([]);
 
-  // 3:00:54
   useEffect(() => {
     db.collection("posts").onSnapshot((snap) => {
       setPosts(snap.docs.map((doc) => doc.data()));
@@ -20,7 +19,7 @@ const Feed = () => {
         <h2>Home</h2>
       </div>
       <TweetBox />
-      {posts.map((p) => {
+      {posts.map((p,indx) => {
         return (
           <Post
             displayName={p.displayName}
@@ -29,6 +28,7 @@ const Feed = () => {
             text={p.text}
             image={p.image}
             avatar={p.avatar}
+            key={indx}
           />
         );
       })}
