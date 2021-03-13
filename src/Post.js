@@ -30,7 +30,12 @@ const Post = forwardRef(
               <p>{text}</p>
             </div>
           </div>
-          <img src={image} alt="" />
+          {image.length > 1 && (
+            <div>
+              <img src={image} alt="imagen" className="post_img" />
+            </div>
+          )}
+
           <div className="post__footer">
             <ChatBubbleIcon fontSize="small" />
             <RepeatIcon fontSize="small" />
