@@ -10,11 +10,7 @@ const Feed = () => {
 
   useEffect(() => {
     db.collection("posts").onSnapshot((snap) => {
-      setPosts(
-        snap.docs.map((doc) => {
-          return { id: doc.id, ...doc.data() };
-        })
-      );
+      setPosts(snap.docs.map((doc) => doc.data()));
     });
   }, []);
 
@@ -25,19 +21,21 @@ const Feed = () => {
       </div>
       <TweetBox />
       <FlipMove>
-        {posts.map((p) => {
-          return (
-            <Post
-              displayName={p.displayName}
-              userName={p.userName}
-              verified={p.verified}
-              text={p.text}
-              image={p.image}
-              avatar={p.avatar}
-              key={p.id}
-            />
-          );
-        })}
+        {posts
+          .sort((a, b) => b.date - a.date)
+          .map((p) => {
+            return (
+              <Post
+                displayName={p.displayName}
+                userName={p.userName}
+                verified={p.verified}
+                text={p.text}
+                image={p.image}
+                avatar={p.avatar}
+                key={p.date}
+              />
+            );
+          })}
       </FlipMove>
     </div>
   );

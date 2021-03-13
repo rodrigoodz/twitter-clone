@@ -28,6 +28,7 @@ const TweetBox = () => {
         image: tweetMessage.image,
         avatar:
           "https://pbs.twimg.com/profile_images/1361506396500541443/waa9IU-Y_400x400.jpg",
+        date: Date.now(),
       });
       setTweetMessage({ message: "", image: "" });
     }
